@@ -1,13 +1,18 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'package:pokemon_battle_system/game.dart';
+import 'package:pokemon_battle_system/presentation/battle_screen.dart';
 
 void main() {
   // Set fullscreen
   WidgetsFlutterBinding.ensureInitialized();
+  if (Platform.isWindows) {
+    setWindowMaxSize(const Size(1024, 768));
+    setWindowMinSize(const Size(512, 384));
+  }
   SystemChrome.setPreferredOrientations([DeviceOrientation.landscapeLeft]);
-  // SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
 
   runApp(const MyApp());
 }
